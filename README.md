@@ -1,4 +1,4 @@
-# E-Yantra AR Lab
+# Spatial Computing Lab
 
 An interactive web-based AR platform for visualizing electronics and embedded systems experiments using 3D models and QR codes.
 
