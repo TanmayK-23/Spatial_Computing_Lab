@@ -347,17 +347,9 @@ export default function CircuitDetail() {
         </section>
 
         {/* Code Snippet */}
-        <section
-          className="
-            space-y-3
-           bg-slate-950/40
-            border border-slate-800/40
-            rounded-xl
-            p-6
-          "
-        >
+        <section className="space-y-3">
           <h2 className="text-xl font-semibold">Raspberry Pi Code</h2>
-          <pre className="bg-slate-900 border border-slate-700 rounded-lg p-4 overflow-x-auto text-sm">
+          <pre className="bg-slate-900/60 border border-slate-700/60 rounded-lg p-4 overflow-x-auto text-sm">
             <code>{circuit.codeSnippet}</code>
           </pre>
         </section>
