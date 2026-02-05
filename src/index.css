@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-gradient-to-br from-slate-900 via-slate-800 to-black text-gray-100;
-  font-family: 'Inter', system-ui, sans-serif;
-}
 @keyframes fadeIn {
     from {
       opacity: 0;
