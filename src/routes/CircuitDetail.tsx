@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { circuits } from "../data/circuits";
 import ModelViewer3D from "../components/ModelViewer3D";
@@ -7,6 +7,10 @@ export default function CircuitDetail() {
   const { slug } = useParams<{ slug: string }>();
 
   const circuit = circuits.find((c) => c.slug === slug);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [slug]);
 
   if (!circuit) {
     return (
@@ -67,7 +71,202 @@ export default function CircuitDetail() {
                   hover:scale-[1.02]
                 "
               >
-                <ModelViewer3D src={circuit.model3D} alt={circuit.name} />
+                <ModelViewer3D
+                  src={circuit.model3D}
+                  alt={circuit.name}
+                  hotspots={
+                    circuit.slug === "voltage-divider"
+                      ? [
+                          {
+                            id: "r1",
+                            position: "-0.086197 m 0.005886 m 0.060606 m",
+                            label: "Resistor R1: drops a portion of the input voltage",
+                          },
+                          {
+                            id: "r2",
+                            position: "-0.024149 m 0.004683 m 0.065716 m",
+                            label: "Resistor R2: works with R1 to divide voltage",
+                          },
+                          {
+                            id: "breadboard",
+                            position: "-0.4 m 0 m 0 m",
+                            label: "Breadboard: Used to mount and interconnect components without soldering",
+                          },
+                          {
+                            id: "battery",
+                            position: "-0.00743 m 0.474856 m 0.006252 m",
+                            label: "Power Source: Provides the input voltage for the circuit",
+                          },
+                          {
+                            id: "voltmeter",
+                            position: "0.642552 m -0.010025 m 0.058602 m",
+                            label: "Voltmeter: Measures voltage across the resistor",
+                          },
+                        ]
+                      : circuit.slug === "ohms-law"
+                      ? [
+                          {
+                            id: "resistor",
+                            position: "-0.024149 m 0.004683 m 0.065716 m",
+                            label: "Resistor: Opposes current flow and follows Ohm’s Law (V = IR)",
+                          },
+                          {
+                            id: "battery",
+                            position: "0.028191 m 0.741747 m -0.004996 m",
+                            label: "Power Source: Supplies voltage to the circuit",
+                          },
+                          {
+                            id: "ammeter",
+                            position: "-0.08999 m 0.332197 m 0.053165 m",
+                            label: "Ammeter: Measures the current flowing through the circuit",
+                          },
+                          {
+                            id: "voltmeter",
+                            position: "0.654095 m -0.009545 m 0.014828 m",
+                            label: "Voltmeter: Measures the voltage across the resistor",
+                          },
+                          {
+                            id: "breadboard",
+                            position: "-0.4 m 0.0 m 0.0 m",
+                            label: "Breadboard: Platform used to assemble the circuit without soldering",
+                          },
+                        ]
+                      : circuit.slug === "led-current-limiting"
+                      ? [
+                          {
+                            id: "led",
+                            position: "-0.091765 m -0.021906 m 0.118719 m",
+                            label: "LED: Emits light when forward biased; polarity must be correct",
+                          },
+                          {
+                            id: "resistor",
+                            position: "-0.024834 m 0.006402 m 0.056125 m",
+                            label: "Resistor: Limits current to protect the LED from damage",
+                          },
+                          {
+                            id: "battery",
+                            position: "0.007182 m 0.474856 m -0.006535 m",
+                            label: "Power Source: Supplies voltage to drive the LED circuit",
+                          },
+                          {
+                            id: "breadboard",
+                            position: "-0.4 m 0 m 0 m",
+                            label: "Breadboard: Used to mount and connect components without soldering",
+                          },
+                        ]
+                        : circuit.slug === "transistor-switching"
+                        ? [
+                            {
+                              id: "transistor",
+                              position: "-0.155982 m 0.001841 m 0.125161 m",
+                              label: "Transistor (BJT): Acts as an electronic switch controlled by base current",
+                            },
+                            {
+                              id: "base-resistor",
+                              position: "-0.198496 m 0.018957 m 0.056988 m",
+                              label: "Base Resistor: Limits base current to protect the transistor",
+                            },
+                            {
+                              id: "load",
+                              position: "-0.09258 m -0.001906 m 0.056316 m",
+                              label: "Load: Turns ON or OFF depending on the transistor state",
+                            },
+                            {
+                              id: "battery",
+                              position: "0.007182 m 0.474856 m -0.006535 m",
+                              label: "Power Source: Supplies voltage to drive the circuit",
+                            },
+                            {
+                              id: "breadboard",
+                              position: "-0.4 m 0 m 0 m",
+                              label: "Breadboard: Platform used to assemble the circuit without soldering",
+                            },
+                          ]
+                          : circuit.slug === "series-resistors"
+                          ? [
+                              {
+                                id: "r1",
+                                position: "-0.024834 m 0.006402 m 0.056125 m",
+                                label: "Resistor R1: First resistor connected in series",
+                              },
+                              {
+                                id: "r2",
+                                position: "-0.087991 m 0.006622 m 0.05519 m",
+                                label: "Resistor R2: Second resistor connected in series",
+                              },
+                              {
+                                id: "battery",
+                                position: "0.007182 m 0.474856 m -0.006535 m",
+                                label: "Power Source: Supplies voltage to the series circuit",
+                              },
+                              {
+                                id: "breadboard",
+                                position: "-0.4 m 0 m 0 m",
+                                label: "Breadboard: Used to mount and interconnect components",
+                              },
+                            ]
+                            : circuit.slug === "parallel-resistors"
+                            ? [
+                                {
+                                  id: "r1",
+                                  position: "-0.024834 m 0.006402 m 0.056125 m",
+                                  label: "Resistor R1: One branch of the parallel network",
+                                },
+                                {
+                                  id: "r2",
+                                  position: "-0.087991 m 0.006622 m 0.05519 m",
+                                  label: "Resistor R2: Second branch of the parallel network",
+                                },
+                                {
+                                  id: "battery",
+                                  position: "0.007182 m 0.474856 m -0.006535 m",
+                                  label: "Power Source: Supplies voltage across parallel branches",
+                                },
+                                {
+                                  id: "breadboard",
+                                  position: "-0.4 m 0 m 0 m",
+                                  label: "Breadboard: Used to assemble the parallel circuit",
+                                },
+                              ]
+                              : circuit.slug === "rc-circuit"
+                              ? [
+                                  {
+                                    id: "resistor",
+                                    position: "-0.024834 m 0.006402 m 0.056125 m",
+                                    label: "Resistor: Controls the rate of charging and discharging",
+                                  },
+                                  {
+                                    id: "capacitor",
+                                    position: "-0.092411 m -0.020127 m 0.061048 m",
+                                    label: "Capacitor: Stores and releases electrical energy",
+                                  },
+                                  {
+                                    id: "battery",
+                                    position: "0.007182 m 0.474856 m -0.006535 m",
+                                    label: "Power Source: Provides voltage for charging the capacitor",
+                                  },
+                                  {
+                                    id: "breadboard",
+                                    position: "-0.4 m 0 m 0 m",
+                                    label: "Breadboard: Platform used to assemble the RC circuit",
+                                  },
+                                ]
+                                : circuit.slug === "traffic-light-esp8266"
+                                ? [
+                                    {
+                                      id: "esp8266",
+                                      position: "-0.496075 m -0.04519 m 0.379513 m",
+                                      label: "ESP8266: Microcontroller that controls the traffic light sequence",
+                                    },
+                                    {
+                                      id: "traffic_module",
+                                      position: "0.290807 m 5.45795 m 0.957263 m",
+                                      label: "Traffic Light Module: LED-based traffic signal unit that displays red, yellow, and green states controlled by the ESP8266.",
+                                    },
+                                  ]
+                      : undefined
+                  }
+                />
               </div>
             </div>
             <p className="text-xs text-slate-400">

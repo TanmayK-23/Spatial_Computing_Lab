@@ -1,8 +1,16 @@
+import "@google/model-viewer";
 import React, { useRef, useState, useEffect } from "react";
+
+type Hotspot = {
+  id: string;
+  position: string; // "x y z"
+  label: string;
+};
 
 type ModelViewer3DProps = {
   src: string;
   alt: string;
+  hotspots?: Hotspot[];
 };
 
 // Web-component wrapper
@@ -10,9 +18,10 @@ const RawModelViewer: React.FC<any> = (props) => {
   return React.createElement("model-viewer" as any, props);
 };
 
-const ModelViewer3D: React.FC<ModelViewer3DProps> = ({ src, alt }) => {
+const ModelViewer3D: React.FC<ModelViewer3DProps> = ({ src, alt, hotspots = [] }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
@@ -68,7 +77,37 @@ const ModelViewer3D: React.FC<ModelViewer3DProps> = ({ src, alt }) => {
         }}
         shadow-intensity="1"
         exposure="1"
-      />
+      >
+        {hotspots.map((hotspot) => (
+          <div
+            key={hotspot.id}
+            slot={`hotspot-${hotspot.id}`}
+            data-position={hotspot.position}
+            data-normal="0m 1m 0m"
+            onClick={(e) => {
+              e.stopPropagation();
+              setActiveHotspot(
+                activeHotspot === hotspot.id ? null : hotspot.id
+              );
+            }}
+            className="relative w-3 h-3 rounded-full bg-blue-500 cursor-pointer
+                       shadow-md shadow-blue-500/60"
+          >
+            {activeHotspot === hotspot.id && (
+              <div
+                className="absolute left-1/2 top-[-0.75rem]
+                           -translate-x-1/2 -translate-y-full
+                           whitespace-nowrap
+                           bg-slate-900 text-white text-xs
+                           px-2 py-1 rounded-md border border-slate-700
+                           pointer-events-auto"
+              >
+                {hotspot.label}
+              </div>
+            )}
+          </div>
+        ))}
+      </RawModelViewer>
     </div>
   );
 };
