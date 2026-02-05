@@ -34,14 +34,9 @@ export default function CircuitDetail() {
 
   return (
     <section className="text-white py-12 animate-fadeIn">
-      <div className="max-w-5xl mx-auto px-6 space-y-10
-        bg-slate-900/60 backdrop-blur-lg
-        border border-slate-800
-        rounded-2xl
-        shadow-2xl shadow-black/40
-      ">
+      <div className="max-w-5xl mx-auto px-6 space-y-10">
         {/* Header */}
-        <header className="space-y-4 pb-6 border-b border-slate-700/60">
+        <header className="space-y-4 pb-6">
           <p className="text-xs uppercase tracking-[0.3em] text-blue-400">
             {circuit.category}
           </p>

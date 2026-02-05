@@ -25,7 +25,7 @@ function App() {
         />
       </div>
       <Navbar />
-      <main className="relative z-10 pt-20">
+      <main className="relative z-10 pt-14">
         <div className="max-w-6xl mx-auto px-6 py-10">
           <Routes>
             <Route path="/" element={<Home />} />
