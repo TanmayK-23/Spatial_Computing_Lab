@@ -82,6 +82,17 @@ export const circuits: Circuit[] = [
       "Measure the output using a voltmeter."
     ],
     codeSnippet: "Not applicable for this experiment.",
+    quiz: [
+      {
+        question: "Where is the output voltage taken in a voltage divider?",
+        options: [
+          "Across the power supply",
+          "Across the first resistor",
+          "At the junction of the two resistors"
+        ],
+        answer: "At the junction of the two resistors"
+      }
+    ]
   },
 
   {
@@ -106,6 +117,17 @@ export const circuits: Circuit[] = [
       "Apply DC voltage and observe LED illumination."
     ],
     codeSnippet: "Not applicable for this experiment.",
+    quiz: [
+      {
+        question: "Why is a resistor used in series with an LED?",
+        options: [
+          "To increase brightness",
+          "To limit current and protect the LED",
+          "To change LED color"
+        ],
+        answer: "To limit current and protect the LED"
+      }
+    ]
   },
 
   {
@@ -129,6 +151,17 @@ export const circuits: Circuit[] = [
       "Observe the single current path."
     ],
     codeSnippet: "Not applicable for this experiment.",
+    quiz: [
+      {
+        question: "In a series circuit, which quantity remains the same through all components?",
+        options: [
+          "Voltage",
+          "Current",
+          "Resistance"
+        ],
+        answer: "Current"
+      }
+    ]
   },
 
   {
@@ -152,6 +185,17 @@ export const circuits: Circuit[] = [
       "Observe multiple current paths."
     ],
     codeSnippet: "Not applicable for this experiment.",
+    quiz: [
+      {
+        question: "In a parallel circuit, which quantity is the same across all branches?",
+        options: [
+          "Current",
+          "Resistance",
+          "Voltage"
+        ],
+        answer: "Voltage"
+      }
+    ]
   },
 
   {
@@ -176,6 +220,17 @@ export const circuits: Circuit[] = [
       "Disconnect supply to observe discharge behavior."
     ],
     codeSnippet: "Not applicable for this experiment.",
+    quiz: [
+      {
+        question: "What determines the charging and discharging rate of an RC circuit?",
+        options: [
+          "Only resistance",
+          "Only capacitance",
+          "The product of resistance and capacitance"
+        ],
+        answer: "The product of resistance and capacitance"
+      }
+    ]
   },
 
   {
@@ -201,6 +256,17 @@ export const circuits: Circuit[] = [
       "Apply base current through a resistor to switch the LED ON and OFF."
     ],
     codeSnippet: "Not applicable for this experiment.",
+    quiz: [
+      {
+        question: "What controls the ON/OFF state of a transistor used as a switch?",
+        options: [
+          "Collector voltage",
+          "Base current",
+          "Emitter resistance"
+        ],
+        answer: "Base current"
+      }
+    ]
   },
   {
     id: "traffic-light-esp8266",
@@ -247,6 +313,17 @@ export const circuits: Circuit[] = [
     digitalWrite(D3, HIGH); // Green
     delay(5000);
     digitalWrite(D3, LOW);
-  }`
+  }`,
+    quiz: [
+      {
+        question: "What is the main role of the ESP8266 in this circuit?",
+        options: [
+          "To supply power",
+          "To control the timing and sequence of LEDs",
+          "To limit current"
+        ],
+        answer: "To control the timing and sequence of LEDs"
+      }
+    ]
   }
 ];
