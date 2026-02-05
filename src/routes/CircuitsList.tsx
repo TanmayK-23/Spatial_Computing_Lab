@@ -5,7 +5,9 @@ export default function CircuitsList() {
   return (
 <section className="text-white py-24">      <div className="max-w-5xl mx-auto px-6">
         
-      <h1 className="text-3xl font-bold">Lab Experiments</h1>
+        <h1 className="text-3xl font-bold">
+          Lab <span className="text-brand-gradient">Experiments</span>
+        </h1>
 
 
 
@@ -22,9 +24,8 @@ export default function CircuitsList() {
               rounded-2xl overflow-hidden
               transition-all duration-300
               hover:-translate-y-2
-              hover:border-blue-400
-              hover:bg-slate-900
-              hover:shadow-xl hover:shadow-blue-500/20
+             hover:border-amber-400/80
+              hover:shadow-xl hover:shadow-amber-400/20
               group
             "
             style={{ transitionDelay: `${idx * 80}ms` }}
@@ -39,7 +40,17 @@ export default function CircuitsList() {
               
               <div className="p-4">
                 <h2 className="text-lg font-semibold mb-2 tracking-tight">{circuit.name}</h2>
-                <span className="inline-block mb-3 text-xs px-3 py-1 rounded-full bg-slate-800/70 text-slate-300 border border-slate-700/60">
+                <span
+                  className="
+                    inline-block mb-3
+                    text-xs font-medium
+                    px-3 py-1 rounded-full
+                    text-white
+                    bg-gradient-to-r from-blue-500/60 to-purple-500/60
+                    backdrop-blur-sm
+                    shadow-sm shadow-blue-500/10
+                  "
+                >
                   {circuit.category}
                 </span>
                 <p className="text-slate-400 text-sm line-clamp-2">

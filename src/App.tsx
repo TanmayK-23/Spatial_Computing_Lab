@@ -7,12 +7,25 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="min-h-screen text-white relative overflow-hidden">    <div className="absolute inset-0 -z-10 overflow-hidden">
-      <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px]" />
-      <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px]" />
-    </div>
+    <div className="min-h-screen text-white relative overflow-hidden">
+
+      {/* Upper canvas glow (prevents dead top area) */}
+      <div className="absolute inset-x-0 top-0 h-[45vh] -z-0 pointer-events-none">
+        <div
+          className="
+            absolute inset-0
+            bg-[radial-gradient(ellipse_at_top,rgba(99,102,241,0.22),transparent_70%)]
+          "
+        />
+        <div
+          className="
+            absolute inset-0
+            bg-[radial-gradient(ellipse_at_top,rgba(168,85,247,0.18),transparent_75%)]
+          "
+        />
+      </div>
       <Navbar />
-      <main className="relative z-10">
+      <main className="relative z-10 pt-20">
         <div className="max-w-6xl mx-auto px-6 py-10">
           <Routes>
             <Route path="/" element={<Home />} />

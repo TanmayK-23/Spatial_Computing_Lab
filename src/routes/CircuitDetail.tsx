@@ -47,7 +47,10 @@ export default function CircuitDetail() {
           </p>
 
           <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">
-            {circuit.name}
+            {circuit.name.split(" ").slice(0, -1).join(" ")}{" "}
+            <span className="text-brand-gradient">
+              {circuit.name.split(" ").slice(-1)}
+            </span>
           </h1>
 
           <p className="text-slate-400 max-w-3xl leading-relaxed">
@@ -59,7 +62,9 @@ export default function CircuitDetail() {
         {circuit.model3D && (
           <section className="relative space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-semibold">Virtual Circuit View</h2>
+            <h2 className="text-xl font-semibold">
+              Virtual <span className="text-brand-gradient">Circuit</span> View
+            </h2>
               <span className="text-xs uppercase tracking-widest text-slate-400">
                 Interactive 3D
               </span>
