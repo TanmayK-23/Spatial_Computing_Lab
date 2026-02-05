@@ -301,13 +301,21 @@ export default function CircuitDetail() {
               <div
                 key={idx}
                 className="
-                  bg-slate-800/70 border border-slate-700 rounded-xl
+                  relative overflow-hidden
+                  rounded-xl
                   px-4 py-3
-                  transition hover:border-emerald-400 hover:bg-slate-800
+                  border border-slate-700/60
+                  bg-gradient-to-br from-blue-500/10 via-slate-800/60 to-purple-500/10
+                  backdrop-blur-md
+                  transition-all duration-300
+                  hover:border-blue-400/70
+                  hover:shadow-lg hover:shadow-blue-500/10
+                  hover:-translate-y-[2px]
                 "
               >
-                <p className="font-medium">{comp.name}</p>
-                <p className="text-xs text-slate-400 mt-1">
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-400/5 to-purple-400/5 opacity-0 hover:opacity-100 transition" />
+                <p className="font-medium relative z-10">{comp.name}</p>
+                <p className="text-xs text-slate-400 mt-1 relative z-10">
                   Type: {comp.type} • Quantity: {comp.quantity}
                 </p>
               </div>
@@ -378,15 +386,6 @@ export default function CircuitDetail() {
           <QuizSection quiz={circuit.quiz} />
         )}
 
-        {/* Back link */}
-        <section>
-          <Link
-            to="/"
-            className="inline-block text-sm text-blue-400 hover:text-blue-300 underline"
-          >
-            ← Back to all circuits
-          </Link>
-        </section>
       </div>
     </section>
   );
@@ -409,23 +408,12 @@ function QuizSection({ quiz }: { quiz: QuizQuestion[] }) {
   };
 
   return (
-    <section
-      className="
-        space-y-4
-       bg-slate-950/40
-        border border-slate-800/40
-        rounded-xl
-        p-6
-      "
-    >
+    <section className="space-y-4">
       <h2 className="text-xl font-semibold">Quick Check</h2>
 
       <div className="space-y-4">
         {quiz.map((q, idx) => (
-          <div
-            key={idx}
-            className="bg-slate-800/70 border border-slate-700 rounded-xl p-4"
-          >
+          <div key={idx} className="space-y-2">
             <p className="font-medium mb-3">
               Q{idx + 1}. {q.question}
             </p>
