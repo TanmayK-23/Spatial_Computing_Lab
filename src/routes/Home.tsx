@@ -1,26 +1,58 @@
+import React, { useEffect } from "react";
+import { observeReveal } from "../main";
+import CircuitsList from "./CircuitsList";
+import { useLocation } from "react-router-dom";
+import labLogo from "../assets/APP Lab Logo.jpeg";
+
 export default function Home() {
+  useEffect(() => {
+    observeReveal();
+  }, []);
+  const location = useLocation();
+
+useEffect(() => {
+  if ((location.state as any)?.scrollToCircuits) {
+    setTimeout(() => {
+      document
+        .getElementById("circuits")
+        ?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  }
+}, [location.state]);
+
   return (
-    <section className="text-white py-20 animate-fadeIn">
-      <div className="max-w-4xl mx-auto text-center px-6">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">
-          Explore Raspberry Pi Circuits in Interactive 3D
-        </h1>
+    <>
+      {/* Hero */}
+      <section className="relative text-white py-28 animate-fadeIn">
+        <div className="max-w-4xl mx-auto text-center px-6">
+          <img
+            src={labLogo}
+            alt="Spatial Computing Lab Logo"
+            className="mx-auto mb-6 h-20 w-auto opacity-80 animate-fadeIn"
+          />
 
-        <p className="text-slate-300 text-lg md:text-xl mb-10 leading-relaxed">
-          Scan the QR codes placed around the lab to view each circuit in a
-          virtual environment. Rotate, zoom, and explore every component
-          in stunning detail.
-        </p>
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
+            Explore Raspberry Pi Circuits
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+              in Interactive 3D
+            </span>
+          </h1>
 
-        <div className="flex justify-center">
-          <a
-            href="/circuits"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-lg font-semibold transition"
-          >
-            Browse All Circuits
-          </a>
+          <p className="text-slate-400 text-lg md:text-xl leading-relaxed">
+            Scan the QR codes placed around the lab to view each circuit in a
+            virtual environment. Rotate, zoom, and explore every component
+            in stunning detail.
+          </p>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Scroll breathing space */}
+      <section className="h-[20vh]" />
+
+      {/* Circuits reveal section */}
+      <section id="circuits" className="relative scroll-mt-24">
+        <CircuitsList />
+      </section>
+    </>
   );
 }

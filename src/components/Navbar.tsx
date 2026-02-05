@@ -1,38 +1,59 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import labLogo from "../assets/APP Lab Logo.jpeg";
 
 export default function Navbar() {
-  return (
-    <nav className="w-full bg-slate-900 border-b border-slate-700">
-      <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        
-        {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-white tracking-wide">
-          Circuit Lab
-        </Link>
+  const navigate = useNavigate();
+  const location = useLocation();
 
-        {/* Navigation Links */}
+  const goHome = () => {
+    navigate("/");
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 50);
+  };
+
+  const goCircuits = () => {
+    navigate("/");
+    setTimeout(() => {
+      document
+        .getElementById("circuits")
+        ?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  };
+
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md border-b border-slate-800/60">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <button
+        onClick={goHome}
+        className="flex items-center gap-3 text-2xl font-extrabold tracking-tight text-white"
+      >
+        <img
+          src={labLogo}
+          alt="Spatial Computing Lab Logo"
+          className="h-9 w-9 object-contain"
+        />
+        <span>SPATIAL COMPUTING LAB</span>
+      </button>
+
         <div className="flex items-center gap-6">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive
+          <button
+            onClick={goHome}
+            className={
+              location.pathname === "/"
                 ? "text-blue-400 font-medium"
                 : "text-slate-300 hover:text-white transition"
             }
           >
             Home
-          </NavLink>
+          </button>
 
-          <NavLink
-            to="/circuits"
-            className={({ isActive }) =>
-              isActive
-                ? "text-blue-400 font-medium"
-                : "text-slate-300 hover:text-white transition"
-            }
+          <button
+            onClick={goCircuits}
+            className="text-slate-300 hover:text-white transition"
           >
             Circuits
-          </NavLink>
+          </button>
 
           <NavLink
             to="/about"
@@ -45,7 +66,6 @@ export default function Navbar() {
             About
           </NavLink>
         </div>
-
       </div>
     </nav>
   );

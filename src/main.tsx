@@ -6,10 +6,34 @@ import "./index.css";
 
 import "@google/model-viewer";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+export const observeReveal = () => {  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+};
+
+const root = ReactDOM.createRoot(
+  document.getElementById("root")!
+);
+
+root.render(
   <React.StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
   </React.StrictMode>
 );
+
+// run reveal AFTER DOM is painted
+requestAnimationFrame(() => {
+  observeReveal();
+});

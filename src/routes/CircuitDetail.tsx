@@ -17,12 +17,12 @@ export default function CircuitDetail() {
       <section className="text-white py-16">
         <div className="max-w-3xl mx-auto px-6">
           <h1 className="text-3xl font-bold mb-4">Circuit not found</h1>
-          <p className="text-slate-300 mb-6">
+          <p className="text-slate-400 mb-6">
             The QR code may be incorrect, or this circuit has not been added
             yet.
           </p>
           <Link
-            to="/circuits"
+            to="/"
             className="text-blue-400 hover:text-blue-300 underline"
           >
             Go back to all circuits
@@ -41,29 +41,36 @@ export default function CircuitDetail() {
         shadow-2xl shadow-black/40
       ">
         {/* Header */}
-        <header className="space-y-3">
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-400">
+        <header className="space-y-4 pb-6 border-b border-slate-700/60">
+          <p className="text-xs uppercase tracking-[0.3em] text-blue-400">
             {circuit.category}
           </p>
-          <h1 className="text-3xl md:text-4xl font-bold">
+
+          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">
             {circuit.name}
           </h1>
-          <p className="text-slate-300 max-w-3xl">
+
+          <p className="text-slate-400 max-w-3xl leading-relaxed">
             {circuit.description}
           </p>
         </header>
 
         {/* 3D Viewer */}
         {circuit.model3D && (
-          <section className="space-y-3">
-            <h2 className="text-xl font-semibold">Virtual Circuit View</h2>
+          <section className="relative space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-semibold">Virtual Circuit View</h2>
+              <span className="text-xs uppercase tracking-widest text-slate-400">
+                Interactive 3D
+              </span>
+            </div>
+
             <div
-              className="relative isolate"
+              className="relative isolate rounded-xl overflow-hidden
+                         border border-slate-700/60
+                         shadow-lg shadow-black/40"
               style={{ perspective: "1200px" }}
             >
-              <div className="absolute z-20 -top-3 -left-3 text-xs bg-blue-600 text-white px-2 py-1 rounded shadow">
-                Interactive 3D
-              </div>
               <div
                 className="
                   relative z-10
@@ -269,6 +276,7 @@ export default function CircuitDetail() {
                 />
               </div>
             </div>
+
             <p className="text-xs text-slate-400">
               Tip: Rotate and zoom to inspect the circuit. On supported phones,
               tap the AR button to view it in your environment.
@@ -277,7 +285,15 @@ export default function CircuitDetail() {
         )}
 
         {/* Components Used — Full Width */}
-        <section className="space-y-4">
+        <section
+          className="
+            space-y-4
+           bg-slate-950/40
+            border border-slate-800/40
+            rounded-xl
+            p-6
+          "
+        >
           <h2 className="text-xl font-semibold">Components Used</h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -300,10 +316,18 @@ export default function CircuitDetail() {
         </section>
 
         {/* Wiring Steps — Below Components */}
-        <section className="space-y-3">
-          <h2 className="text-xl font-semibold">Wiring Steps</h2>
+        <section
+          className="
+            space-y-3
+           bg-slate-950/40
+            border border-slate-800/40
+            rounded-xl
+            p-6
+          "
+        >
+          <h2 className="text-lg font-semibold tracking-tight text-slate-100">Wiring Steps</h2>
 
-          <ol className="list-decimal list-inside space-y-2 text-slate-200 max-w-3xl">
+          <ol className="list-decimal list-inside space-y-2 text-slate-300 max-w-3xl">
             {circuit.wiringSteps.map((step, idx) => (
               <li key={idx}>{step}</li>
             ))}
@@ -315,7 +339,15 @@ export default function CircuitDetail() {
         </section>
 
         {/* Code Snippet */}
-        <section className="space-y-3">
+        <section
+          className="
+            space-y-3
+           bg-slate-950/40
+            border border-slate-800/40
+            rounded-xl
+            p-6
+          "
+        >
           <h2 className="text-xl font-semibold">Raspberry Pi Code</h2>
           <pre className="bg-slate-900 border border-slate-700 rounded-lg p-4 overflow-x-auto text-sm">
             <code>{circuit.codeSnippet}</code>
@@ -324,9 +356,17 @@ export default function CircuitDetail() {
 
         {/* Safety Notes */}
         {circuit.safetyNotes && (
-          <section className="space-y-3">
+          <section
+            className="
+              space-y-3
+             bg-slate-950/40
+              border border-slate-800/40
+              rounded-xl
+              p-6
+            "
+          >
             <h2 className="text-xl font-semibold">Safety Notes</h2>
-            <ul className="list-disc list-inside text-slate-300 space-y-1">
+            <ul className="list-disc list-inside text-slate-400 space-y-1">
               {circuit.safetyNotes.map((note, idx) => (
                 <li key={idx}>{note}</li>
               ))}
@@ -341,7 +381,7 @@ export default function CircuitDetail() {
         {/* Back link */}
         <section>
           <Link
-            to="/circuits"
+            to="/"
             className="inline-block text-sm text-blue-400 hover:text-blue-300 underline"
           >
             ← Back to all circuits
@@ -369,7 +409,15 @@ function QuizSection({ quiz }: { quiz: QuizQuestion[] }) {
   };
 
   return (
-    <section className="space-y-4">
+    <section
+      className="
+        space-y-4
+       bg-slate-950/40
+        border border-slate-800/40
+        rounded-xl
+        p-6
+      "
+    >
       <h2 className="text-xl font-semibold">Quick Check</h2>
 
       <div className="space-y-4">
@@ -382,7 +430,7 @@ function QuizSection({ quiz }: { quiz: QuizQuestion[] }) {
               Q{idx + 1}. {q.question}
             </p>
 
-            <ul className="list-disc list-inside text-slate-300 text-sm space-y-1 mb-3">
+            <ul className="list-disc list-inside text-slate-400 text-sm space-y-1 mb-3">
               {q.options.map((opt, i) => (
                 <li key={i}>{opt}</li>
               ))}
