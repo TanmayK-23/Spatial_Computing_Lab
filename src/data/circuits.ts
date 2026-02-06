@@ -41,13 +41,15 @@ export const circuits: Circuit[] = [
       { name: "DC Power Supply", type: "source", quantity: 1 },
       { name: "Ammeter", type: "measurement", quantity: 1 },
       { name: "Voltmeter", type: "measurement", quantity: 1 },
-      { name: "Jumper Wires", type: "wire", quantity: 4 },
+      { name: "Jumper Wires", type: "wire", quantity: 5 },
     ],
     wiringSteps: [
-      "Place the resistor on the breadboard.",
-      "Connect the ammeter in series with the resistor.",
-      "Connect the voltmeter across the resistor.",
-      "Apply DC voltage and observe readings."
+      "Place a resistor across two separate rows (30E to 30G) on the breadboard.",
+      "Connect the positive terminal of the DC power supply to positive terminal of ammeter.",
+      "Connect the positive terminal of ammeter to one end of the resistor (30E).",
+      "Connect the negative terminal of the DC power supply to the other end of the resistor (30G).",
+      "Connect the voltmeter probes (+ve to 30E -ve to 30G) across the resistor terminals.",
+      "Switch ON the power supply and observe voltage and current readings."
     ],
     codeSnippet: "Not applicable for this experiment.",
     quiz: [
@@ -73,13 +75,15 @@ export const circuits: Circuit[] = [
       { name: "Resistors", type: "passive", quantity: 2 },
       { name: "DC Power Supply", type: "source", quantity: 1 },
       { name: "Voltmeter", type: "measurement", quantity: 1 },
-      { name: "Jumper Wires", type: "wire", quantity: 4 },
+      { name: "Jumper Wires", type: "wire", quantity: 5 },
     ],
     wiringSteps: [
-      "Place two resistors in series on the breadboard.",
-      "Apply input voltage across the resistor pair.",
-      "Take output voltage from the junction of the resistors.",
-      "Measure the output using a voltmeter."
+      "Place two resistors (R1 - 25E to 25G and R2 - 30E to 30G) in series on the breadboard.",
+      "Connect the positive terminal of the DC power supply to the free end of R1 (25E).",
+      "Connect the free end (30G) of R2 to the negative terminal to battery.",
+      "Take the output voltage from the junction between R1 and R2 (30E and 30G).",
+      "Connect the voltmeter positive probe to the junction of R1 and R2 (30E).",
+      "Connect the voltmeter negative probe to ground (30G) and measure the output voltage."
     ],
     codeSnippet: "Not applicable for this experiment.",
     quiz: [
@@ -109,12 +113,14 @@ export const circuits: Circuit[] = [
       { name: "LED", type: "active", quantity: 1 },
       { name: "Resistor", type: "passive", quantity: 1 },
       { name: "DC Power Supply", type: "source", quantity: 1 },
-      { name: "Jumper Wires", type: "wire", quantity: 4 },
+      { name: "Jumper Wires", type: "wire", quantity: 3 },
     ],
     wiringSteps: [
-      "Connect the resistor in series with the LED.",
-      "Ensure correct LED polarity.",
-      "Apply DC voltage and observe LED illumination."
+      "Place the LED on the breadboard ensuring correct polarity (long leg is anode - 25E, short leg - 24E).",
+      "Connect a resistor in series with the LED anode (30G to 25E).",
+      "Connect the free end (30E) of the resistor to the positive terminal of the DC power supply.",
+      "Connect the LED cathode (24E) (short leg) to the negative terminal of battery.",
+      "Switch ON the power supply and observe LED illumination."
     ],
     codeSnippet: "Not applicable for this experiment.",
     quiz: [
@@ -143,12 +149,14 @@ export const circuits: Circuit[] = [
       { name: "Breadboard", type: "hardware", quantity: 1 },
       { name: "Resistors", type: "passive", quantity: 2 },
       { name: "DC Power Supply", type: "source", quantity: 1 },
-      { name: "Jumper Wires", type: "wire", quantity: 4 },
+      { name: "Jumper Wires", type: "wire", quantity: 3 },
     ],
     wiringSteps: [
-      "Place two resistors end-to-end on the breadboard.",
-      "Connect the series combination to the power supply.",
-      "Observe the single current path."
+      "Place two resistors (30E to 30G) & (25E to 25G) end-to-end in series on the breadboard.",
+      "Connect the positive terminal of the DC power supply to the first resistor (30E).",
+      "Connect the second resistor’s free end (25G) to the negative terminal of battery.",
+      "Ensure only one continuous current path exists through both resistors.",
+      "Apply voltage and observe current behavior."
     ],
     codeSnippet: "Not applicable for this experiment.",
     quiz: [
@@ -177,12 +185,14 @@ export const circuits: Circuit[] = [
       { name: "Breadboard", type: "hardware", quantity: 1 },
       { name: "Resistors", type: "passive", quantity: 2 },
       { name: "DC Power Supply", type: "source", quantity: 1 },
-      { name: "Jumper Wires", type: "wire", quantity: 5 },
+      { name: "Jumper Wires", type: "wire", quantity: 4 },
     ],
     wiringSteps: [
-      "Place resistors in parallel across the power supply.",
-      "Ensure both resistors share the same input and output nodes.",
-      "Observe multiple current paths."
+      "Place two (30E to 30G) & (25E to 25G) resistors in parallel on the breadboard.",
+      "Connect one end (30E and 25E) of both resistors to the positive supply rail.",
+      "Connect the other end (30G and 25G) of both resistors to the ground rail.",
+      "Ensure both resistors share the same voltage across them.",
+      "Apply voltage and observe current division between branches."
     ],
     codeSnippet: "Not applicable for this experiment.",
     quiz: [
@@ -212,12 +222,14 @@ export const circuits: Circuit[] = [
       { name: "Resistor", type: "passive", quantity: 1 },
       { name: "Capacitor", type: "passive", quantity: 1 },
       { name: "DC Power Supply", type: "source", quantity: 1 },
-      { name: "Jumper Wires", type: "wire", quantity: 4 },
+      { name: "Jumper Wires", type: "wire", quantity: 3 },
     ],
     wiringSteps: [
-      "Connect the resistor in series with the capacitor.",
-      "Apply DC voltage to charge the capacitor.",
-      "Disconnect supply to observe discharge behavior."
+      "Connect the resistor (30E, 30G) in series with the capacitor (25E +ve pin and 24E -ve pin) on the breadboard.",
+      "Connect the positive terminal of the DC power supply to the resistor (30E).",
+      "Connect the capacitor negative terminal (24E) to the negative terminal of the battery.",
+      "Apply DC voltage to observe capacitor charging.",
+      "Disconnect the power supply to observe capacitor discharging through the resistor."
     ],
     codeSnippet: "Not applicable for this experiment.",
     quiz: [
@@ -248,12 +260,16 @@ export const circuits: Circuit[] = [
       { name: "LED", type: "active", quantity: 1 },
       { name: "Resistor", type: "passive", quantity: 2 },
       { name: "DC Power Supply", type: "source", quantity: 1 },
-      { name: "Jumper Wires", type: "wire", quantity: 6 },
+      { name: "Jumper Wires", type: "wire", quantity: 5 },
     ],
     wiringSteps: [
-      "Connect the LED as a load at the collector.",
-      "Connect emitter to ground.",
-      "Apply base current through a resistor to switch the LED ON and OFF."
+        "Insert the NPN transistor into the breadboard as shown in the model.",
+        "Identify the transistor connections based on wiring: left pin as Base, middle pin as Collector, right pin as Emitter.",
+        "Connect the emitter pin (right pin - 20E) directly to the negative terminal of the battery.",
+        "Connect the collector pin (middle pin - 19E) to the LED cathode (24E) using a jumper wire.",
+        "Connect the LED anode (25E) to the positive terminal of the battery.",
+        "Connect a resistor (16E to 16G) between the base pin (left pin - 18E) and the positive control voltage.",
+        "Apply control voltage to the base through the resistor to switch the LED ON and OFF."
     ],
     codeSnippet: "Not applicable for this experiment.",
     quiz: [
@@ -281,14 +297,15 @@ export const circuits: Circuit[] = [
     components: [
       { name: "ESP8266", type: "microcontroller", quantity: 1 },
       { name: "Traffic Light LED Module", type: "output", quantity: 1 },
-      { name: "Breadboard", type: "hardware", quantity: 1 },
-      { name: "Jumper Wires", type: "wire", quantity: 5 },
+      { name: "Jumper Wires", type: "wire", quantity: 4 },
       { name: "USB Power Supply", type: "source", quantity: 1 },
     ],
   
     wiringSteps: [
-      "Connect ESP8266 3.3V and GND to the traffic light module.",
-      "Connect GPIO pins to Red, Yellow, and Green LED inputs.",
+      "Connect ESP8266 D7 to Red LED input pin.",
+      "Connect ESP8266 D6 to Yellow LED input pin.",
+      "Connect ESP8266 D5 to Green LED input pin.",
+      "Connect ESP8266 GND to GND of traffic light module.",      
       "Upload control logic to ESP8266.",
       "Observe timed LED switching sequence."
     ],
@@ -296,23 +313,23 @@ export const circuits: Circuit[] = [
     codeSnippet: 
   `// ESP8266 Traffic Light Logic
   void setup() {
-    pinMode(D1, OUTPUT);
-    pinMode(D2, OUTPUT);
-    pinMode(D3, OUTPUT);
+    pinMode(D7, OUTPUT);
+    pinMode(D6, OUTPUT);
+    pinMode(D5, OUTPUT);
   }
   
   void loop() {
-    digitalWrite(D1, HIGH); // Red
+    digitalWrite(D7, HIGH); // Red
     delay(5000);
-    digitalWrite(D1, LOW);
+    digitalWrite(D7, LOW);
   
-    digitalWrite(D2, HIGH); // Yellow
+    digitalWrite(D6, HIGH); // Yellow
     delay(2000);
-    digitalWrite(D2, LOW);
+    digitalWrite(D6, LOW);
   
-    digitalWrite(D3, HIGH); // Green
+    digitalWrite(D5, HIGH); // Green
     delay(5000);
-    digitalWrite(D3, LOW);
+    digitalWrite(D5, LOW);
   }`,
     quiz: [
       {
