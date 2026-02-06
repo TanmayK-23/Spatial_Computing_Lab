@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { observeReveal } from "../main";
 import CircuitsList from "./CircuitsList";
 import { useLocation } from "react-router-dom";

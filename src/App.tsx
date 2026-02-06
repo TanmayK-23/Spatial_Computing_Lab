@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./routes/Home";
-import CircuitsList from "./routes/CircuitsList";
 import CircuitDetail from "./routes/CircuitDetail";
 import About from "./routes/About";
 import Navbar from "./components/Navbar";
