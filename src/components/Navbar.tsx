@@ -33,10 +33,11 @@ export default function Navbar() {
           alt="Spatial Computing Lab Logo"
           className="h-9 w-9 object-contain"
         />
-        <span>SPATIAL COMPUTING LAB</span>
+        <span className="hidden sm:inline">SPATIAL COMPUTING LAB</span>
+        <span className="sm:hidden">SCL</span>
       </button>
 
-        <div className="flex items-center gap-6">
+        <div className="hidden sm:flex items-center gap-6">
           <button
             onClick={goHome}
             className={
