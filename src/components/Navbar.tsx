@@ -37,7 +37,7 @@ export default function Navbar() {
         <span className="sm:hidden">SCL</span>
       </button>
 
-        <div className="hidden sm:flex items-center gap-6">
+        <div className="flex items-center gap-6">
           <button
             onClick={goHome}
             className={
