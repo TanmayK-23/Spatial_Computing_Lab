@@ -29,7 +29,7 @@ export const circuits: Circuit[] = [
     name: "Ohm’s Law – Single Resistor Circuit",
     category: "Basic Electronics",
     slug: "ohms-law",
-    thumbnail: "/images/circuits/ohms-law.png",
+    thumbnail: "/images/circuits/ohms-law.webp",
     model3D: "/models/ohms-law.glb",
     description:
       "This experiment verifies Ohm’s Law by demonstrating the linear relationship between voltage, current, and resistance using a single resistor.",
@@ -63,7 +63,7 @@ export const circuits: Circuit[] = [
     name: "Voltage Divider Circuit",
     category: "Analog Electronics",
     slug: "voltage-divider",
-    thumbnail: "/images/circuits/voltage-divider.png",
+    thumbnail: "/images/circuits/voltage-divider.webp",
     model3D: "/models/voltage-divider.glb",
     description:
       "This experiment demonstrates how an input voltage is divided across two series resistors, producing a lower output voltage at their junction.",
@@ -100,7 +100,7 @@ export const circuits: Circuit[] = [
     name: "LED with Current-Limiting Resistor",
     category: "Basic Electronics",
     slug: "led-current-limiting",
-    thumbnail: "/images/circuits/led-current-limiting.png",
+    thumbnail: "/images/circuits/led-current-limiting.webp",
     model3D: "/models/led-current-limiting.glb",
     description:
       "This experiment demonstrates safe operation of an LED using a series resistor to limit current.",
@@ -136,7 +136,7 @@ export const circuits: Circuit[] = [
     name: "Series Resistors – Equivalent Resistance",
     category: "Analog Electronics",
     slug: "series-resistors",
-    thumbnail: "/images/circuits/series-resistors.png",
+    thumbnail: "/images/circuits/series-resistors.webp",
     model3D: "/models/series-resistors.glb",
     description:
       "This experiment demonstrates how equivalent resistance increases when resistors are connected in series.",
@@ -171,7 +171,7 @@ export const circuits: Circuit[] = [
     name: "Parallel Resistors – Current Division",
     category: "Analog Electronics",
     slug: "parallel-resistors",
-    thumbnail: "/images/circuits/parallel-resistors.png",
+    thumbnail: "/images/circuits/parallel-resistors.webp",
     model3D: "/models/parallel-resistors.glb",
     description:
       "This experiment demonstrates current division when resistors are connected in parallel.",
@@ -206,7 +206,7 @@ export const circuits: Circuit[] = [
     name: "RC Circuit – Charging and Discharging",
     category: "Analog Electronics",
     slug: "rc-circuit",
-    thumbnail: "/images/circuits/rc-circuit.png",
+    thumbnail: "/images/circuits/rc-circuit.webp",
     model3D: "/models/rc-charging-discharging.glb",
     description:
       "This experiment demonstrates the charging and discharging behavior of a capacitor through a resistor.",
@@ -242,7 +242,7 @@ export const circuits: Circuit[] = [
     name: "Transistor Switching – Logic Level Demonstration",
     category: "Semiconductor Devices",
     slug: "transistor-switching",
-    thumbnail: "/images/circuits/transistor-switching.png",
+    thumbnail: "/images/circuits/transistor-switching.webp",
     model3D: "/models/transistor-switching.glb",
     description:
       "This experiment demonstrates transistor operation as a switch, where a small base current controls a larger load current.",
@@ -280,7 +280,7 @@ export const circuits: Circuit[] = [
     name: "Traffic Light Control using ESP8266",
     category: "Embedded Systems",
     slug: "traffic-light-esp8266",
-    thumbnail: "/images/circuits/traffic-light-esp8266.png",
+    thumbnail: "/images/circuits/traffic-light-esp8266.webp",
     model3D: "/models/traffic-light-esp8266.glb",
     description:
       "This experiment demonstrates traffic light control using an ESP8266 microcontroller, where GPIO pins are used to drive red, yellow, and green LEDs in a timed sequence.",
