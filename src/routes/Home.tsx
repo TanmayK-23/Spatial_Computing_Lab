@@ -47,20 +47,20 @@ export default function Home() {
 
 
         <div className="max-w-4xl mx-auto text-center px-6 relative z-10 mb-24">
-          <h1 className="text-6xl md:text-[112px] font-light leading-[1.05] tracking-tight-display text-ink mb-20 display-font max-w-4xl mx-auto">
+          <h1 className="text-5xl sm:text-6xl md:text-[112px] font-light leading-[1.05] tracking-tight-display text-ink mb-16 md:mb-20 display-font max-w-4xl mx-auto">
             Circuit Verse
           </h1>
 
-          <div className="flex items-center justify-center gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12 w-full max-w-md mx-auto sm:max-w-none">
             <button
               onClick={() => document.getElementById("circuits")?.scrollIntoView({ behavior: "smooth" })}
-              className="bg-ink text-canvas text-[15px] font-semibold px-8 h-[48px] rounded-full hover:bg-black transition-all flex items-center justify-center shadow-lg shadow-ink/10 ring-1 ring-ink"
+              className="w-full sm:w-auto bg-ink text-canvas text-[15px] font-semibold px-8 h-[48px] rounded-full hover:bg-black transition-all flex items-center justify-center shadow-lg shadow-ink/10 ring-1 ring-ink"
             >
               Explore Lab
             </button>
             <button
               onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-              className="bg-transparent text-ink text-[15px] font-semibold px-8 h-[48px] rounded-full border-[1.5px] border-ink hover:bg-ink hover:text-canvas transition-all flex items-center justify-center shadow-sm"
+              className="w-full sm:w-auto bg-transparent text-ink text-[15px] font-semibold px-8 h-[48px] rounded-full border-[1.5px] border-ink hover:bg-ink hover:text-canvas transition-all flex items-center justify-center shadow-sm"
             >
               About
             </button>

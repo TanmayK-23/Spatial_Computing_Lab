@@ -93,7 +93,7 @@ export default function CircuitDetail() {
             {circuit.category}
           </p>
 
-          <h1 className="text-5xl md:text-[64px] font-light leading-[1.05] tracking-tight-display display-font text-ink">
+          <h1 className="text-4xl sm:text-5xl md:text-[64px] font-light leading-[1.05] tracking-tight-display display-font text-ink">
             {circuit.name}
           </h1>
 
