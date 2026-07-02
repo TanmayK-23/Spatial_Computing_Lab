@@ -66,16 +66,16 @@ export default function CircuitDetail() {
 
   if (!circuit) {
     return (
-      <section className="text-white py-16">
+      <section className="pt-16 pb-32">
         <div className="max-w-3xl mx-auto px-6">
-          <h1 className="text-3xl font-bold mb-4">Circuit not found</h1>
-          <p className="text-slate-400 mb-6">
+          <h1 className="text-4xl font-light mb-6 display-font text-ink">Circuit not found</h1>
+          <p className="text-body text-lg mb-8">
             The QR code may be incorrect, or this circuit has not been added
             yet.
           </p>
           <Link
             to="/"
-            className="text-blue-400 hover:text-blue-300 underline"
+            className="text-ink hover:opacity-70 underline underline-offset-4"
           >
             Go back to all circuits
           </Link>
@@ -85,32 +85,29 @@ export default function CircuitDetail() {
   }
 
   return (
-    <section className="text-white py-12 animate-fadeIn">
-      <div className="max-w-5xl mx-auto px-6 space-y-10">
+    <section className="pt-8 pb-24 animate-fadeIn">
+      <div className="max-w-5xl mx-auto px-6 space-y-16">
         {/* Header */}
-        <header className="space-y-4 pb-6">
-          <p className="text-xs uppercase tracking-[0.3em] text-blue-400">
+        <header className="space-y-6 pb-8">
+          <p className="text-[12px] uppercase tracking-[0.96px] font-semibold text-ink">
             {circuit.category}
           </p>
 
-          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">
-            {circuit.name.split(" ").slice(0, -1).join(" ")}{" "}
-            <span className="text-brand-gradient">
-              {circuit.name.split(" ").slice(-1)}
-            </span>
+          <h1 className="text-5xl md:text-[64px] font-light leading-[1.05] tracking-tight-display display-font text-ink">
+            {circuit.name}
           </h1>
 
-          <p className="text-slate-400 max-w-3xl leading-relaxed">
+          <p className="text-body text-lg max-w-3xl leading-relaxed">
             {circuit.description}
           </p>
         </header>
 
         {/* 3D Viewer */}
         {circuit.model3D && (
-          <section className="relative space-y-4">
+          <section className="relative space-y-6">
             <div className="flex items-center justify-between">
-            <h2 className="text-xl font-semibold">
-              Virtual <span className="text-brand-gradient">Circuit</span> View
+            <h2 className="text-2xl font-light display-font text-ink">
+              Virtual Circuit View
             </h2>
               <span className="text-xs uppercase tracking-widest text-slate-400">
                 Interactive 3D
@@ -119,15 +116,14 @@ export default function CircuitDetail() {
 
             <div
               className="relative isolate rounded-xl overflow-hidden
-                         border border-slate-700/60
-                         shadow-lg shadow-black/40"
+                         bg-surface-card border border-hairline
+                         shadow-[0_4px_16px_rgba(0,0,0,0.04)]"
               style={{ perspective: "1200px" }}
             >
               <div
                 className="
-                  relative z-10
+                  relative z-10 bg-transparent
                   transition-transform duration-300 ease-out
-                  hover:scale-[1.02]
                 "
               >
                 <ModelViewer3D
@@ -138,7 +134,7 @@ export default function CircuitDetail() {
               </div>
             </div>
 
-            <p className="text-xs text-slate-400">
+            <p className="text-sm text-muted">
               Tip: Rotate and zoom to inspect the circuit. On supported phones,
               tap the AR button to view it in your environment.
             </p>
@@ -148,35 +144,32 @@ export default function CircuitDetail() {
         {/* Components Used — Full Width */}
         <section
           className="
-            space-y-4
-           bg-slate-950/40
-            border border-slate-800/40
+            space-y-6
+            bg-surface-card
+            border border-hairline
             rounded-xl
-            p-6
+            p-8
           "
         >
-          <h2 className="text-xl font-semibold">Components Used</h2>
+          <h2 className="text-2xl font-light display-font text-ink">Components Used</h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {circuit.components.map((comp, idx) => (
               <div
                 key={idx}
                 className="
                   relative overflow-hidden
                   rounded-xl
-                  px-4 py-3
-                  border border-slate-700/60
-                  bg-gradient-to-br from-blue-500/10 via-slate-800/60 to-purple-500/10
-                  backdrop-blur-md
+                  px-5 py-4
+                  border border-hairline
+                  bg-surface-strong
                   transition-all duration-300
-                  hover:border-blue-400/70
-                  hover:shadow-lg hover:shadow-blue-500/10
+                  hover:border-hairline-strong
                   hover:-translate-y-[2px]
                 "
               >
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-400/5 to-purple-400/5 opacity-0 hover:opacity-100 transition" />
-                <p className="font-medium relative z-10">{comp.name}</p>
-                <p className="text-xs text-slate-400 mt-1 relative z-10">
+                <p className="font-medium text-ink relative z-10">{comp.name}</p>
+                <p className="text-sm text-body mt-1 relative z-10">
                   Type: {comp.type} • Quantity: {comp.quantity}
                 </p>
               </div>
@@ -187,32 +180,32 @@ export default function CircuitDetail() {
         {/* Wiring Steps — Below Components */}
         <section
           className="
-            space-y-3
-           bg-slate-950/40
-            border border-slate-800/40
+            space-y-6
+            bg-surface-card
+            border border-hairline
             rounded-xl
-            p-6
+            p-8
           "
         >
-          <h2 className="text-lg font-semibold tracking-tight text-slate-100">Wiring Steps</h2>
+          <h2 className="text-2xl font-light display-font text-ink">Wiring Steps</h2>
 
-          <ol className="list-decimal list-inside space-y-2 text-slate-300 max-w-3xl">
+          <ol className="list-decimal list-outside ml-5 space-y-3 text-body text-lg max-w-3xl">
             {circuit.wiringSteps.map((step, idx) => (
-              <li key={idx}>{step}</li>
+              <li key={idx} className="pl-2">{step}</li>
             ))}
           </ol>
 
-          <p className="text-xs text-slate-400 mt-3">
+          <p className="text-sm text-muted mt-6">
             This virtual representation mirrors the physical breadboard layout used in the lab.
           </p>
         </section>
 
         {/* Code Snippet */}
-        <section className="space-y-3">
-          <h2 className="text-xl font-semibold">
+        <section className="space-y-4">
+          <h2 className="text-2xl font-light display-font text-ink">
             {circuit.category === "Embedded Systems" ? "Microcontroller Code" : "Code Snippet"}
           </h2>
-          <pre className="bg-slate-900/60 border border-slate-700/60 rounded-lg p-4 overflow-x-auto text-sm">
+          <pre className="bg-surface-strong border border-hairline text-ink rounded-lg p-6 overflow-x-auto text-sm shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]">
             <code>{circuit.codeSnippet}</code>
           </pre>
         </section>
@@ -221,15 +214,15 @@ export default function CircuitDetail() {
         {circuit.safetyNotes && (
           <section
             className="
-              space-y-3
-             bg-slate-950/40
-              border border-slate-800/40
+              space-y-6
+              bg-surface-card
+              border border-semantic-error/20
               rounded-xl
-              p-6
+              p-8
             "
           >
-            <h2 className="text-xl font-semibold">Safety Notes</h2>
-            <ul className="list-disc list-inside text-slate-400 space-y-1">
+            <h2 className="text-2xl font-light display-font text-ink">Safety Notes</h2>
+            <ul className="list-disc list-inside text-body space-y-2">
               {circuit.safetyNotes.map((note, idx) => (
                 <li key={idx}>{note}</li>
               ))}
@@ -259,31 +252,31 @@ function QuizSection({ quiz }: { quiz: QuizQuestion[] }) {
   };
 
   return (
-    <section className="space-y-4">
-      <h2 className="text-xl font-semibold">Quick Check</h2>
+    <section className="space-y-6 pt-8 border-t border-hairline">
+      <h2 className="text-2xl font-light display-font text-ink">Quick Check</h2>
 
-      <div className="space-y-4">
+      <div className="space-y-8">
         {quiz.map((q, idx) => (
-          <div key={idx} className="space-y-2">
-            <p className="font-medium mb-3">
+          <div key={idx} className="space-y-3">
+            <p className="font-medium text-ink text-lg">
               Q{idx + 1}. {q.question}
             </p>
 
-            <ul className="list-disc list-inside text-slate-400 text-sm space-y-1 mb-3">
+            <ul className="list-disc list-outside ml-5 text-body space-y-2 mb-4">
               {q.options.map((opt, i) => (
-                <li key={i}>{opt}</li>
+                <li key={i} className="pl-2">{opt}</li>
               ))}
             </ul>
 
             {!visibleAnswers[idx] ? (
               <button
                 onClick={() => toggleAnswer(idx)}
-                className="text-sm text-blue-400 hover:text-blue-300 underline"
+                className="text-sm font-medium text-ink hover:opacity-70 underline underline-offset-4"
               >
                 Show Answer
               </button>
             ) : (
-              <p className="text-sm text-emerald-400">
+              <p className="text-sm font-medium text-semantic-success bg-semantic-success/10 inline-block px-4 py-2 rounded-md">
                 Answer: {q.answer}
               </p>
             )}

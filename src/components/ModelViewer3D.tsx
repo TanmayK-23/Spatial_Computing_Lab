@@ -45,18 +45,19 @@ const ModelViewer3D: React.FC<ModelViewer3DProps> = ({ src, alt, hotspots = [] }
   return (
     <div
       ref={containerRef}
-      className={`relative w-full overflow-hidden ${
-        isFullscreen ? "bg-black" : "rounded-xl border border-slate-800"
+      className={`relative w-full overflow-hidden backdrop-blur-md ${
+        isFullscreen ? "bg-canvas" : "rounded-xl border border-hairline bg-surface-card/30"
       }`}
     >
       {/* Fullscreen button */}
       <button
         onClick={toggleFullscreen}
-        className="absolute top-3 right-3 z-20
-                   bg-slate-900/80 backdrop-blur
-                   text-white text-xs px-3 py-1.5
-                   rounded-md border border-slate-700
-                   hover:bg-slate-800 transition"
+        className="absolute top-4 right-4 z-20
+                   bg-surface-card/80 backdrop-blur-sm
+                   text-ink font-medium text-xs px-4 py-2
+                   rounded-full border border-hairline
+                   hover:bg-surface-strong transition-colors
+                   shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
       >
         {isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
       </button>
@@ -72,8 +73,8 @@ const ModelViewer3D: React.FC<ModelViewer3DProps> = ({ src, alt, hotspots = [] }
         ar-modes="webxr scene-viewer quick-look"
         style={{
           width: "100%",
-          height: isFullscreen ? "100vh" : "360px",
-          background: "#020617",
+          height: isFullscreen ? "100vh" : "400px",
+          background: "transparent",
           touchAction: "none",
         }}
         shadow-intensity="1"
@@ -91,16 +92,17 @@ const ModelViewer3D: React.FC<ModelViewer3DProps> = ({ src, alt, hotspots = [] }
                 activeHotspot === hotspot.id ? null : hotspot.id
               );
             }}
-            className="relative w-3 h-3 rounded-full bg-blue-500 cursor-pointer
-                       shadow-md shadow-blue-500/60"
+            className="relative w-3.5 h-3.5 rounded-full bg-ink cursor-pointer
+                       shadow-[0_2px_8px_rgba(0,0,0,0.15)] ring-2 ring-white/50"
           >
             {activeHotspot === hotspot.id && (
               <div
                 className="absolute left-1/2 top-[-0.75rem]
                            -translate-x-1/2 -translate-y-full
-                           w-max max-w-[200px] text-wrap text-center
-                           bg-slate-900 text-white text-xs
-                           px-2 py-1.5 rounded-md border border-slate-700
+                           w-max max-w-[220px] text-wrap text-center
+                           bg-surface-card text-ink text-sm font-medium
+                           px-3 py-2 rounded-lg border border-hairline
+                           shadow-[0_4px_16px_rgba(0,0,0,0.08)]
                            pointer-events-auto"
               >
                 {hotspot.label}

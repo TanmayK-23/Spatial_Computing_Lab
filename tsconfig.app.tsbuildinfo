@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/custom-elements.d.ts","./src/main.tsx","./src/components/modelviewer3d.tsx","./src/components/navbar.tsx","./src/components/threads.jsx","./src/data/circuits.ts","./src/routes/circuitdetail.tsx","./src/routes/circuitslist.tsx","./src/routes/home.tsx"],"version":"5.9.3"}

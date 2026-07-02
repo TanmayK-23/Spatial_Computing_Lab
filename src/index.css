@@ -7,14 +7,20 @@ html,
 body,
 #root {
   height: 100%;
-  background-color: #020617; /* near-true black */
+  background-color: #f5f5f5; /* canvas */
+  color: #0c0a09; /* ink */
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 /* Smooth text */
 body {
-  @apply antialiased;
+  @apply antialiased tracking-wide-body;
+}
+
+h1, h2, h3, h4, h5, h6, .display-font {
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: -0.04em;
 }
 
 /* Subtle fade animation (keep yours, it’s good) */
@@ -32,15 +38,7 @@ body {
 .animate-fadeIn {
   animation: fadeIn 0.6s ease-out both;
 }
-/* Subtle grain overlay for premium feel */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
-}
+
 
 /* Scroll reveal */
 .reveal {
@@ -58,16 +56,4 @@ body::before {
 }
 html {
   scroll-behavior: smooth;
-}
-/* Brand gradient text */
-.text-brand-gradient {
-  background: linear-gradient(
-    90deg,
-    #60a5fa,  /* blue-400 */
-    #a78bfa   /* violet-400 */
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
 }

@@ -3,11 +3,11 @@ import { circuits } from "../data/circuits";
 
 export default function CircuitsList() {
   return (
-    <section className="text-white py-24">
+    <section className="pt-8 pb-24">
       <div className="max-w-5xl mx-auto px-6">
         
-        <h1 className="text-3xl font-bold mb-8">
-          Lab <span className="text-brand-gradient">Experiments</span>
+        <h1 className="text-4xl font-light mb-12 display-font text-ink text-center">
+          Lab Experiments
         </h1>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -15,46 +15,43 @@ export default function CircuitsList() {
             <Link
             key={circuit.slug}
             to={`/circuit/${circuit.slug}`}
-            className="
+              className="
               reveal
-              bg-slate-900/60 backdrop-blur-lg
-              border border-slate-800/70
-              rounded-2xl overflow-hidden
+              bg-surface-card
+              border border-hairline
+              rounded-xl overflow-hidden
               transition-all duration-300
               hover:-translate-y-2
-             hover:border-amber-400/80
-              hover:shadow-xl hover:shadow-amber-400/20
+              hover:border-hairline-strong
+              hover:shadow-[0_4px_16px_rgba(0,0,0,0.04)]
               group
             "
             style={{ transitionDelay: `${idx * 80}ms` }}
           >
-              <div className="h-40 bg-slate-950/80 flex items-center justify-center">
+              <div className="h-40 bg-surface-strong flex items-center justify-center overflow-hidden">
                 <img
                   src={circuit.thumbnail}
                   alt={circuit.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover mix-blend-multiply"
                 />
               </div>
               
-              <div className="p-4">
-                <h2 className="text-lg font-semibold mb-2 tracking-tight">{circuit.name}</h2>
+              <div className="p-6">
+                <h2 className="text-xl font-medium mb-3 text-ink tracking-tight">{circuit.name}</h2>
                 <span
                   className="
-                    inline-block mb-3
-                    text-xs font-medium
+                    inline-block mb-4
+                    text-[12px] font-semibold tracking-[0.96px] uppercase
                     px-3 py-1 rounded-full
-                    text-white
-                    bg-gradient-to-r from-blue-500/60 to-purple-500/60
-                    backdrop-blur-sm
-                    shadow-sm shadow-blue-500/10
+                    text-ink bg-surface-strong
                   "
                 >
                   {circuit.category}
                 </span>
-                <p className="text-slate-400 text-sm line-clamp-2">
+                <p className="text-body text-sm line-clamp-2">
                   {circuit.description}
                 </p>
-                <p className="mt-3 text-sm text-blue-400 opacity-0 group-hover:opacity-100 transition">
+                <p className="mt-4 text-sm font-medium text-ink opacity-0 group-hover:opacity-100 transition-opacity">
                   View in interactive 3D →
                 </p>
               </div>

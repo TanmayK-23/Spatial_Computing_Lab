@@ -1,11 +1,54 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: [
-      "./index.html",
-      "./src/**/*.{js,ts,jsx,tsx}",
-    ],
-    theme: {
-      extend: {},
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: "#292524",
+        "primary-active": "#0c0a09",
+        ink: "#0c0a09",
+        body: "#4e4e4e",
+        "body-strong": "#292524",
+        muted: "#777169",
+        "muted-soft": "#a8a29e",
+        hairline: "#e7e5e4",
+        "hairline-soft": "#f0efed",
+        "hairline-strong": "#d6d3d1",
+        canvas: "#f5f5f5",
+        "canvas-soft": "#fafafa",
+        "canvas-deep": "#0c0a09",
+        "surface-card": "#ffffff",
+        "surface-strong": "#f0efed",
+        "surface-dark": "#0c0a09",
+        "surface-dark-elevated": "#1c1917",
+        "on-primary": "#ffffff",
+        "on-dark": "#ffffff",
+        "on-dark-soft": "#a8a29e",
+        "gradient-mint": "#a7e5d3",
+        "gradient-peach": "#f4c5a8",
+        "gradient-lavender": "#c8b8e0",
+        "gradient-sky": "#a8c8e8",
+        "gradient-rose": "#e8b8c4",
+      },
+      fontFamily: {
+        display: ['"Cormorant Garamond"', "serif"],
+        body: ['"Inter"', "sans-serif"],
+      },
+      borderRadius: {
+        xl: "16px",
+        xxl: "24px",
+      },
+      letterSpacing: {
+        "tight-display": "-0.04em",
+        "wide-body": "0.01em",
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      }
     },
-    plugins: [],
-  };
+  },
+  plugins: [],
+};
