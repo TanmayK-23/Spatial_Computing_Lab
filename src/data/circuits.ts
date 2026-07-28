@@ -2,6 +2,7 @@ export type ComponentItem = {
   name: string;
   type: string;
   quantity: number;
+  image?: string; // Optional image URL for the component
 };
 
 export type QuizQuestion = {
@@ -34,12 +35,12 @@ export const circuits: Circuit[] = [
     description:
       "This experiment verifies Ohm’s Law by demonstrating the linear relationship between voltage, current, and resistance using a single resistor.",
     components: [
-      { name: "Breadboard", type: "hardware", quantity: 1 },
-      { name: "Resistor", type: "passive", quantity: 1 },
-      { name: "DC Power Supply", type: "source", quantity: 1 },
-      { name: "Ammeter", type: "measurement", quantity: 1 },
-      { name: "Voltmeter", type: "measurement", quantity: 1 },
-      { name: "Jumper Wires", type: "wire", quantity: 5 },
+      { name: "Breadboard", type: "hardware", quantity: 1, image: "/images/components/breadboard.webp" },
+      { name: "Resistor", type: "passive", quantity: 1, image: "/images/components/resistor.webp" },
+      { name: "DC Power Supply", type: "source", quantity: 1, image: "/images/components/dc_power_supply.webp" },
+      { name: "Ammeter", type: "measurement", quantity: 1, image: "/images/components/ammeter.webp" },
+      { name: "Voltmeter", type: "measurement", quantity: 1, image: "/images/components/voltmeter.webp" },
+      { name: "Jumper Wires", type: "wire", quantity: 5, image: "/images/components/jumper_wires.webp" },
     ],
     wiringSteps: [
       "Place a resistor across two separate rows (30E to 30G) on the breadboard.",
@@ -68,11 +69,11 @@ export const circuits: Circuit[] = [
     description:
       "This experiment demonstrates how an input voltage is divided across two series resistors, producing a lower output voltage at their junction.",
     components: [
-      { name: "Breadboard", type: "hardware", quantity: 1 },
-      { name: "Resistors", type: "passive", quantity: 2 },
-      { name: "DC Power Supply", type: "source", quantity: 1 },
-      { name: "Voltmeter", type: "measurement", quantity: 1 },
-      { name: "Jumper Wires", type: "wire", quantity: 5 },
+      { name: "Breadboard", type: "hardware", quantity: 1, image: "/images/components/breadboard.webp" },
+      { name: "Resistors", type: "passive", quantity: 2, image: "/images/components/resistor.webp" },
+      { name: "DC Power Supply", type: "source", quantity: 1, image: "/images/components/dc_power_supply.webp" },
+      { name: "Voltmeter", type: "measurement", quantity: 1, image: "/images/components/voltmeter.webp" },
+      { name: "Jumper Wires", type: "wire", quantity: 5, image: "/images/components/jumper_wires.webp" },
     ],
     wiringSteps: [
       "Place two resistors (R1 - 25E to 25G and R2 - 30E to 30G) in series on the breadboard.",
@@ -105,11 +106,11 @@ export const circuits: Circuit[] = [
     description:
       "This experiment demonstrates safe operation of an LED using a series resistor to limit current.",
     components: [
-      { name: "Breadboard", type: "hardware", quantity: 1 },
-      { name: "LED", type: "active", quantity: 1 },
-      { name: "Resistor", type: "passive", quantity: 1 },
-      { name: "DC Power Supply", type: "source", quantity: 1 },
-      { name: "Jumper Wires", type: "wire", quantity: 3 },
+      { name: "Breadboard", type: "hardware", quantity: 1, image: "/images/components/breadboard.webp" },
+      { name: "LED", type: "active", quantity: 1, image: "/images/components/led.webp" },
+      { name: "Resistor", type: "passive", quantity: 1, image: "/images/components/resistor.webp" },
+      { name: "DC Power Supply", type: "source", quantity: 1, image: "/images/components/dc_power_supply.webp" },
+      { name: "Jumper Wires", type: "wire", quantity: 3, image: "/images/components/jumper_wires.webp" },
     ],
     wiringSteps: [
       "Place the LED on the breadboard ensuring correct polarity (long leg is anode - 25E, short leg - 24E).",
@@ -141,10 +142,10 @@ export const circuits: Circuit[] = [
     description:
       "This experiment demonstrates how equivalent resistance increases when resistors are connected in series.",
     components: [
-      { name: "Breadboard", type: "hardware", quantity: 1 },
-      { name: "Resistors", type: "passive", quantity: 2 },
-      { name: "DC Power Supply", type: "source", quantity: 1 },
-      { name: "Jumper Wires", type: "wire", quantity: 3 },
+      { name: "Breadboard", type: "hardware", quantity: 1, image: "/images/components/breadboard.webp" },
+      { name: "Resistors", type: "passive", quantity: 2, image: "/images/components/resistor.webp" },
+      { name: "DC Power Supply", type: "source", quantity: 1, image: "/images/components/dc_power_supply.webp" },
+      { name: "Jumper Wires", type: "wire", quantity: 3, image: "/images/components/jumper_wires.webp" },
     ],
     wiringSteps: [
       "Place two resistors (30E to 30G) & (25E to 25G) end-to-end in series on the breadboard.",
@@ -176,10 +177,10 @@ export const circuits: Circuit[] = [
     description:
       "This experiment demonstrates current division when resistors are connected in parallel.",
     components: [
-      { name: "Breadboard", type: "hardware", quantity: 1 },
-      { name: "Resistors", type: "passive", quantity: 2 },
-      { name: "DC Power Supply", type: "source", quantity: 1 },
-      { name: "Jumper Wires", type: "wire", quantity: 4 },
+      { name: "Breadboard", type: "hardware", quantity: 1, image: "/images/components/breadboard.webp" },
+      { name: "Resistors", type: "passive", quantity: 2, image: "/images/components/resistor.webp" },
+      { name: "DC Power Supply", type: "source", quantity: 1, image: "/images/components/dc_power_supply.webp" },
+      { name: "Jumper Wires", type: "wire", quantity: 4, image: "/images/components/jumper_wires.webp" },
     ],
     wiringSteps: [
       "Place two (30E to 30G) & (25E to 25G) resistors in parallel on the breadboard.",
@@ -211,11 +212,11 @@ export const circuits: Circuit[] = [
     description:
       "This experiment demonstrates the charging and discharging behavior of a capacitor through a resistor.",
     components: [
-      { name: "Breadboard", type: "hardware", quantity: 1 },
-      { name: "Resistor", type: "passive", quantity: 1 },
-      { name: "Capacitor", type: "passive", quantity: 1 },
-      { name: "DC Power Supply", type: "source", quantity: 1 },
-      { name: "Jumper Wires", type: "wire", quantity: 3 },
+      { name: "Breadboard", type: "hardware", quantity: 1, image: "/images/components/breadboard.webp" },
+      { name: "Resistor", type: "passive", quantity: 1, image: "/images/components/resistor.webp" },
+      { name: "Capacitor", type: "passive", quantity: 1, image: "/images/components/capacitor.webp" },
+      { name: "DC Power Supply", type: "source", quantity: 1, image: "/images/components/dc_power_supply.webp" },
+      { name: "Jumper Wires", type: "wire", quantity: 3, image: "/images/components/jumper_wires.webp" },
     ],
     wiringSteps: [
       "Connect the resistor (30E, 30G) in series with the capacitor (25E +ve pin and 24E -ve pin) on the breadboard.",
@@ -247,12 +248,12 @@ export const circuits: Circuit[] = [
     description:
       "This experiment demonstrates transistor operation as a switch, where a small base current controls a larger load current.",
     components: [
-      { name: "Breadboard", type: "hardware", quantity: 1 },
-      { name: "NPN Transistor", type: "active", quantity: 1 },
-      { name: "LED (acts as resistor)", type: "active", quantity: 1 },
-      { name: "Resistor", type: "passive", quantity: 1 },
-      { name: "DC Power Supply", type: "source", quantity: 1 },
-      { name: "Jumper Wires", type: "wire", quantity: 5 },
+      { name: "Breadboard", type: "hardware", quantity: 1, image: "/images/components/breadboard.webp" },
+      { name: "NPN Transistor", type: "active", quantity: 1, image: "/images/components/transistor.webp" },
+      { name: "LED (acts as resistor)", type: "active", quantity: 1, image: "/images/components/led.webp" },
+      { name: "Resistor", type: "passive", quantity: 1, image: "/images/components/resistor.webp" },
+      { name: "DC Power Supply", type: "source", quantity: 1, image: "/images/components/dc_power_supply.webp" },
+      { name: "Jumper Wires", type: "wire", quantity: 5, image: "/images/components/jumper_wires.webp" },
     ],
     wiringSteps: [
         "Insert the NPN transistor into the breadboard as shown in the model.",
@@ -286,10 +287,10 @@ export const circuits: Circuit[] = [
       "This experiment demonstrates traffic light control using an ESP8266 microcontroller, where GPIO pins are used to drive red, yellow, and green LEDs in a timed sequence.",
   
     components: [
-      { name: "ESP8266", type: "microcontroller", quantity: 1 },
-      { name: "Traffic Light LED Module", type: "output", quantity: 1 },
-      { name: "Jumper Wires", type: "wire", quantity: 4 },
-      { name: "USB Power Supply", type: "source", quantity: 1 },
+      { name: "ESP8266", type: "microcontroller", quantity: 1, image: "/images/components/esp8266.webp" },
+      { name: "Traffic Light LED Module", type: "output", quantity: 1, image: "/images/components/traffic_light_module.webp" },
+      { name: "Jumper Wires", type: "wire", quantity: 4, image: "/images/components/jumper_wires.webp" },
+      { name: "USB Power Supply", type: "source", quantity: 1, image: "/images/components/usb_power_supply.webp" },
     ],
   
     wiringSteps: [
