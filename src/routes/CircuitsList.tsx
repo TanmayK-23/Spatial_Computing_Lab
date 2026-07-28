@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { circuits } from "../data/circuits";
 import CardSwap, { Card } from "../components/CardSwap";
