@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { circuits, type QuizQuestion } from "../data/circuits";
 import ModelViewer3D from "../components/ModelViewer3D";
 import Stepper, { Step } from "../components/Stepper";
+import FlowingMenu from "../components/FlowingMenu";
 
 const HOTSPOTS_MAP: Record<string, { id: string; position: string; label: string; normal?: string }[]> = {
   "voltage-divider": [
@@ -86,10 +87,11 @@ export default function CircuitDetail() {
   }
 
   return (
-    <section className="pt-8 pb-24 animate-fadeIn">
+    <div className="pt-8 pb-24 animate-fadeIn">
+      {/* --- Top Constrained Section --- */}
       <div className="max-w-5xl mx-auto px-6 space-y-16">
         {/* Header */}
-        <header className="space-y-6 pb-8">
+        <header className="space-y-6 pb-8 flex flex-col items-center text-center mx-auto max-w-4xl">
           <p className="text-[12px] uppercase tracking-[0.96px] font-semibold text-ink">
             {circuit.category}
           </p>
@@ -141,54 +143,37 @@ export default function CircuitDetail() {
             </p>
           </section>
         )}
+      </div>
 
-        {/* Components Used — Full Width */}
-        <section
-          className="
-            space-y-6
-            bg-surface-card
-            border border-hairline
-            rounded-xl
-            p-8
-          "
-        >
-          <h2 className="text-2xl font-light display-font text-ink">Components Used</h2>
+      {/* --- Full Bleed Components Section --- */}
+      <section className="w-full mt-16 mb-16 border-y border-hairline bg-surface-card overflow-hidden">
+        <div className="w-full bg-ink py-6 border-b border-hairline">
+          <h2 className="text-2xl font-light display-font text-surface-card text-center">Components Used</h2>
+        </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {circuit.components.map((comp, idx) => (
-              <div
-                key={idx}
-                className="
-                  bg-surface-card
-                  border border-hairline
-                  rounded-lg
-                  p-4
-                  hover:border-ink hover:shadow-[0_4px_16px_rgba(0,0,0,0.04)]
-                  transition-all duration-300
-                  relative overflow-hidden
-                "
-              >
-                <p className="font-medium text-ink relative z-10">{comp.name}</p>
-                <p className="text-sm text-body mt-1 relative z-10">
-                  Type: {comp.type} • Quantity: {comp.quantity}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <div className="h-[250px] sm:h-[350px] w-full relative">
+          <FlowingMenu 
+            items={circuit.components.map((comp, idx) => ({
+              link: '#', 
+              text: `${comp.quantity}x ${comp.name}`, 
+              image: comp.image || `https://picsum.photos/600/400?random=${idx + circuit.slug.length}` 
+            }))}
+            bgColor="transparent"
+            textColor="#1a1a1a"
+            marqueeBgColor="#A855F7"
+            marqueeTextColor="#ffffff"
+            borderColor="#e5e5e5"
+          />
+        </div>
+      </section>
 
-        {/* Wiring Steps — Below Components */}
-        <section
-          className="
-            space-y-6
-            bg-surface-card
-            border border-hairline
-            rounded-xl
-            p-8
-          "
-        >
-          <h2 className="text-2xl font-light display-font text-ink mb-6">Wiring Steps</h2>
+      {/* --- Full Bleed Wiring Steps Section --- */}
+      <section className="w-full mb-16 border-y border-hairline bg-surface-card overflow-hidden">
+        <div className="w-full bg-ink py-6 border-b border-hairline">
+          <h2 className="text-2xl font-light display-font text-surface-card text-center">Wiring Steps</h2>
+        </div>
 
+        <div className="w-full max-w-5xl mx-auto px-6 py-12">
           <Stepper initialStep={1} backButtonText="Previous" nextButtonText="Next" stepCircleContainerClassName="shadow-none border-0">
             {circuit.wiringSteps.map((step, idx) => (
               <Step key={idx}>
@@ -200,11 +185,14 @@ export default function CircuitDetail() {
             ))}
           </Stepper>
 
-          <p className="text-sm text-muted mt-6 text-center">
+          <p className="text-sm text-muted mt-12 text-center">
             This virtual representation mirrors the physical breadboard layout used in the lab.
           </p>
-        </section>
+        </div>
+      </section>
 
+      {/* --- Bottom Constrained Section --- */}
+      <div className="max-w-5xl mx-auto px-6 space-y-16">
         {/* Code Snippet */}
         <section className="space-y-4">
           <h2 className="text-2xl font-light display-font text-ink">
@@ -238,9 +226,8 @@ export default function CircuitDetail() {
         {circuit.quiz && circuit.quiz.length > 0 && (
           <QuizSection quiz={circuit.quiz} />
         )}
-
       </div>
-    </section>
+    </div>
   );
 }
 
