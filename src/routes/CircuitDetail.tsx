@@ -154,7 +154,6 @@ export default function CircuitDetail() {
         <div className="h-[250px] sm:h-[350px] w-full relative">
           <FlowingMenu 
             items={circuit.components.map((comp, idx) => ({
-              link: '#', 
               text: `${comp.quantity}x ${comp.name}`, 
               image: comp.image || `https://picsum.photos/600/400?random=${idx + circuit.slug.length}` 
             }))}

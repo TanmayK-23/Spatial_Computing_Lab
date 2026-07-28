@@ -4,7 +4,6 @@ import { gsap } from 'gsap';
 import './FlowingMenu.css';
 
 interface MenuItemData {
-  link: string;
   text: string;
   image: string;
 }
@@ -58,7 +57,6 @@ const FlowingMenu: React.FC<FlowingMenuProps> = ({
 };
 
 const MenuItem: React.FC<MenuItemProps> = ({
-  link,
   text,
   image,
   speed,
