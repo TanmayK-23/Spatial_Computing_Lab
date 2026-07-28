@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { circuits, type QuizQuestion } from "../data/circuits";
 import ModelViewer3D from "../components/ModelViewer3D";
+import Stepper, { Step } from "../components/Stepper";
 
-const HOTSPOTS_MAP: Record<string, any[]> = {
+const HOTSPOTS_MAP: Record<string, { id: string; position: string; label: string; normal?: string }[]> = {
   "voltage-divider": [
     { id: "r1", position: "-0.086197 m 0.005886 m 0.060606 m", label: "Resistor R1: drops a portion of the input voltage" },
     { id: "r2", position: "-0.024149 m 0.004683 m 0.065716 m", label: "Resistor R2: works with R1 to divide voltage" },
@@ -158,14 +159,13 @@ export default function CircuitDetail() {
               <div
                 key={idx}
                 className="
-                  relative overflow-hidden
-                  rounded-xl
-                  px-5 py-4
+                  bg-surface-card
                   border border-hairline
-                  bg-surface-strong
+                  rounded-lg
+                  p-4
+                  hover:border-ink hover:shadow-[0_4px_16px_rgba(0,0,0,0.04)]
                   transition-all duration-300
-                  hover:border-hairline-strong
-                  hover:-translate-y-[2px]
+                  relative overflow-hidden
                 "
               >
                 <p className="font-medium text-ink relative z-10">{comp.name}</p>
@@ -187,15 +187,20 @@ export default function CircuitDetail() {
             p-8
           "
         >
-          <h2 className="text-2xl font-light display-font text-ink">Wiring Steps</h2>
+          <h2 className="text-2xl font-light display-font text-ink mb-6">Wiring Steps</h2>
 
-          <ol className="list-decimal list-outside ml-5 space-y-3 text-body text-lg max-w-3xl">
+          <Stepper initialStep={1} backButtonText="Previous" nextButtonText="Next" stepCircleContainerClassName="shadow-none border-0">
             {circuit.wiringSteps.map((step, idx) => (
-              <li key={idx} className="pl-2">{step}</li>
+              <Step key={idx}>
+                <div className="text-left w-full h-full py-4">
+                  <h3 className="text-xl font-medium mb-4 text-ink">Step {idx + 1}</h3>
+                  <p className="text-lg text-body leading-relaxed">{step}</p>
+                </div>
+              </Step>
             ))}
-          </ol>
+          </Stepper>
 
-          <p className="text-sm text-muted mt-6">
+          <p className="text-sm text-muted mt-6 text-center">
             This virtual representation mirrors the physical breadboard layout used in the lab.
           </p>
         </section>
