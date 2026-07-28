@@ -90,6 +90,9 @@ const ModelViewer3D: React.FC<ModelViewer3DProps> = ({ src, alt, hotspots = [] }
         interaction-prompt="none"
         ar
         ar-modes="webxr scene-viewer quick-look"
+        camera-orbit="0deg 75deg 50%"
+        max-camera-orbit="auto auto 100%"
+        min-camera-orbit="auto auto 10%"
         style={{
           width: "100%",
           height: isFullscreen ? "100vh" : "400px",
