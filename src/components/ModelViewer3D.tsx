@@ -15,7 +15,9 @@ type ModelViewer3DProps = {
 };
 
 // Web-component wrapper
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const RawModelViewer: React.FC<any> = (props) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return React.createElement("model-viewer" as any, props);
 };
 
@@ -38,8 +40,25 @@ const ModelViewer3D: React.FC<ModelViewer3DProps> = ({ src, alt, hotspots = [] }
     };
 
     document.addEventListener("fullscreenchange", onFullscreenChange);
-    return () =>
+    
+    // Aggressive scroll prevention: block wheel and touchmove on the entire container using CAPTURE
+    const container = containerRef.current;
+    const preventScroll = (e: Event) => {
+      e.preventDefault();
+    };
+    
+    if (container) {
+      container.addEventListener('wheel', preventScroll, { passive: false, capture: true });
+      container.addEventListener('touchmove', preventScroll, { passive: false, capture: true });
+    }
+    
+    return () => {
       document.removeEventListener("fullscreenchange", onFullscreenChange);
+      if (container) {
+        container.removeEventListener('wheel', preventScroll, { capture: true });
+        container.removeEventListener('touchmove', preventScroll, { capture: true });
+      }
+    };
   }, []);
 
   return (

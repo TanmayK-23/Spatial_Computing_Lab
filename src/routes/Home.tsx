@@ -89,7 +89,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="pt-24 pb-32 border-t border-hairline scroll-mt-16">
+      <section id="about" className="pt-12 pb-32 border-t border-hairline scroll-mt-16">
         <div className="max-w-4xl mx-auto px-6 space-y-16 w-full reveal text-center">
           <header className="space-y-6">
             <h1 className="text-5xl md:text-[48px] font-light tracking-tight-display display-font text-ink">
