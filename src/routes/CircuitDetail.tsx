@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { circuits, type QuizQuestion } from "../data/circuits";
+import { circuits } from "../data/circuits";
 import ModelViewer3D from "../components/ModelViewer3D";
-import Stepper, { Step } from "../components/Stepper";
-import FlowingMenu from "../components/FlowingMenu";
+import CircuitBento from "../components/CircuitBento";
 
 const HOTSPOTS_MAP: Record<string, { id: string; position: string; label: string; normal?: string }[]> = {
   "voltage-divider": [
@@ -89,7 +88,7 @@ export default function CircuitDetail() {
   return (
     <div className="pt-8 pb-24 animate-fadeIn">
       {/* --- Top Constrained Section --- */}
-      <div className="max-w-5xl mx-auto px-6 space-y-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16">
         {/* Header */}
         <header className="space-y-6 pb-8 flex flex-col items-center text-center mx-auto max-w-4xl">
           <p className="text-[12px] uppercase tracking-[0.96px] font-semibold text-ink">
@@ -145,65 +144,12 @@ export default function CircuitDetail() {
         )}
       </div>
 
-      {/* --- Full Bleed Components Section --- */}
-      <section className="w-full mt-16 mb-16 border-y border-hairline bg-surface-card overflow-hidden">
-        <div className="w-full bg-ink py-6 border-b border-hairline">
-          <h2 className="text-2xl font-light display-font text-surface-card text-center">Components Used</h2>
-        </div>
+      {/* --- Bento Grid Section --- */}
+      <CircuitBento circuit={circuit} />
 
-        <div className="h-[250px] sm:h-[350px] w-full relative">
-          <FlowingMenu 
-            items={circuit.components.map((comp, idx) => ({
-              text: `${comp.quantity}x ${comp.name}`, 
-              image: comp.image || `https://picsum.photos/600/400?random=${idx + circuit.slug.length}` 
-            }))}
-            bgColor="transparent"
-            textColor="#1a1a1a"
-            marqueeBgColor="#A855F7"
-            marqueeTextColor="#ffffff"
-            borderColor="#e5e5e5"
-          />
-        </div>
-      </section>
-
-      {/* --- Full Bleed Wiring Steps Section --- */}
-      <section className="w-full mb-16 border-y border-hairline bg-surface-card overflow-hidden">
-        <div className="w-full bg-ink py-6 border-b border-hairline">
-          <h2 className="text-2xl font-light display-font text-surface-card text-center">Wiring Steps</h2>
-        </div>
-
-        <div className="w-full max-w-5xl mx-auto px-6 py-12">
-          <Stepper initialStep={1} backButtonText="Previous" nextButtonText="Next" stepCircleContainerClassName="shadow-none border-0">
-            {circuit.wiringSteps.map((step, idx) => (
-              <Step key={idx}>
-                <div className="text-left w-full h-full py-4">
-                  <h3 className="text-xl font-medium mb-4 text-ink">Step {idx + 1}</h3>
-                  <p className="text-lg text-body leading-relaxed">{step}</p>
-                </div>
-              </Step>
-            ))}
-          </Stepper>
-
-          <p className="text-sm text-muted mt-12 text-center">
-            This virtual representation mirrors the physical breadboard layout used in the lab.
-          </p>
-        </div>
-      </section>
-
-      {/* --- Bottom Constrained Section --- */}
-      <div className="max-w-5xl mx-auto px-6 space-y-16">
-        {/* Code Snippet */}
-        <section className="space-y-4">
-          <h2 className="text-2xl font-light display-font text-ink">
-            {circuit.category === "Embedded Systems" ? "Microcontroller Code" : "Code Snippet"}
-          </h2>
-          <pre className="bg-surface-strong border border-hairline text-ink rounded-lg p-6 overflow-x-auto text-sm shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]">
-            <code>{circuit.codeSnippet}</code>
-          </pre>
-        </section>
-
-        {/* Safety Notes */}
-        {circuit.safetyNotes && (
+      {/* --- Bottom Constrained Section (Safety) --- */}
+      {circuit.safetyNotes && (
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16">
           <section
             className="
               space-y-6
@@ -220,60 +166,8 @@ export default function CircuitDetail() {
               ))}
             </ul>
           </section>
-        )}
-
-        {circuit.quiz && circuit.quiz.length > 0 && (
-          <QuizSection quiz={circuit.quiz} />
-        )}
-      </div>
+        </div>
+      )}
     </div>
-  );
-}
-
-
-
-function QuizSection({ quiz }: { quiz: QuizQuestion[] }) {
-  const [visibleAnswers, setVisibleAnswers] = React.useState<Record<number, boolean>>({});
-
-  const toggleAnswer = (index: number) => {
-    setVisibleAnswers((prev) => ({
-      ...prev,
-      [index]: !prev[index],
-    }));
-  };
-
-  return (
-    <section className="space-y-6 pt-8 border-t border-hairline">
-      <h2 className="text-2xl font-light display-font text-ink">Quick Check</h2>
-
-      <div className="space-y-8">
-        {quiz.map((q, idx) => (
-          <div key={idx} className="space-y-3">
-            <p className="font-medium text-ink text-lg">
-              Q{idx + 1}. {q.question}
-            </p>
-
-            <ul className="list-disc list-outside ml-5 text-body space-y-2 mb-4">
-              {q.options.map((opt, i) => (
-                <li key={i} className="pl-2">{opt}</li>
-              ))}
-            </ul>
-
-            {!visibleAnswers[idx] ? (
-              <button
-                onClick={() => toggleAnswer(idx)}
-                className="text-sm font-medium text-ink hover:opacity-70 underline underline-offset-4"
-              >
-                Show Answer
-              </button>
-            ) : (
-              <p className="text-sm font-medium text-semantic-success bg-semantic-success/10 inline-block px-4 py-2 rounded-md">
-                Answer: {q.answer}
-              </p>
-            )}
-          </div>
-        ))}
-      </div>
-    </section>
   );
 }
