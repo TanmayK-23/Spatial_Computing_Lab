@@ -95,7 +95,7 @@ const ModelViewer3D: React.FC<ModelViewer3DProps> = ({ src, alt, hotspots = [] }
         camera-orbit="0deg 75deg auto"
         style={{
           width: "100%",
-          height: isFullscreen ? "100vh" : "400px",
+          height: isFullscreen ? "100vh" : "550px",
           background: "transparent",
           touchAction: "none",
         }}
