@@ -16,10 +16,44 @@ export default function CircuitsList() {
           Lab Experiments
         </h1>
 
-        <div className="flex flex-col md:flex-row w-full relative">
+        {/* Mobile View: Standard Stacked Cards */}
+        <div className="md:hidden flex flex-col gap-6 pb-20">
+          {circuits.map((circuit) => (
+            <Link 
+              key={circuit.slug} 
+              to={`/circuit/${circuit.slug}`}
+              className="flex flex-col bg-surface-card rounded-[2rem] border border-hairline shadow-sm overflow-hidden active:scale-[0.98] transition-transform"
+            >
+              <div className="h-56 bg-surface-strong flex items-center justify-center overflow-hidden shrink-0">
+                <img
+                  src={circuit.thumbnail}
+                  alt={circuit.name}
+                  className="w-full h-full object-cover mix-blend-multiply"
+                />
+              </div>
+              <div className="p-6 flex flex-col gap-3">
+                <div>
+                  <h2 className="text-2xl font-medium text-ink tracking-tight">{circuit.name}</h2>
+                  <span className="inline-block mt-2 text-[10px] font-semibold tracking-[0.96px] uppercase px-3 py-1.5 rounded-full text-ink bg-surface-strong">
+                    {circuit.category}
+                  </span>
+                </div>
+                <p className="text-body text-sm line-clamp-3">
+                  {circuit.description}
+                </p>
+                <div className="mt-2 text-sm font-semibold text-ink inline-flex items-center gap-1">
+                  View interactive 3D <span>→</span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Desktop View: Interactive Split */}
+        <div className="hidden md:flex flex-row w-full relative">
           
           {/* Left Side: LineSidebar */}
-          <div className="hidden md:block w-1/2 relative z-20">
+          <div className="w-1/2 relative z-20">
             <div className="sticky top-0 h-screen w-full flex flex-col justify-center pl-12 pb-48">
               <LineSidebar 
                 className="w-full"
