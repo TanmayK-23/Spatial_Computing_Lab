@@ -12,6 +12,7 @@ type ModelViewer3DProps = {
   src: string;
   alt: string;
   hotspots?: Hotspot[];
+  disableZoom?: boolean;
 };
 
 // Web-component wrapper
@@ -21,7 +22,7 @@ const RawModelViewer: React.FC<any> = (props) => {
   return React.createElement("model-viewer" as any, props);
 };
 
-const ModelViewer3D: React.FC<ModelViewer3DProps> = ({ src, alt, hotspots = [] }) => {
+const ModelViewer3D: React.FC<ModelViewer3DProps> = ({ src, alt, hotspots = [], disableZoom = false }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
@@ -40,18 +41,18 @@ const ModelViewer3D: React.FC<ModelViewer3DProps> = ({ src, alt, hotspots = [] }
     };
 
     document.addEventListener("fullscreenchange", onFullscreenChange);
-    
+
     // Aggressive scroll prevention: block wheel and touchmove on the entire container using CAPTURE
     const container = containerRef.current;
     const preventScroll = (e: Event) => {
       e.preventDefault();
     };
-    
+
     if (container) {
       container.addEventListener('wheel', preventScroll, { passive: false, capture: true });
       container.addEventListener('touchmove', preventScroll, { passive: false, capture: true });
     }
-    
+
     return () => {
       document.removeEventListener("fullscreenchange", onFullscreenChange);
       if (container) {
@@ -64,9 +65,8 @@ const ModelViewer3D: React.FC<ModelViewer3DProps> = ({ src, alt, hotspots = [] }
   return (
     <div
       ref={containerRef}
-      className={`relative w-full overflow-hidden backdrop-blur-md ${
-        isFullscreen ? "bg-canvas" : "rounded-xl border border-hairline bg-surface-card/30"
-      }`}
+      className={`relative w-full overflow-hidden backdrop-blur-md ${isFullscreen ? "bg-canvas" : "rounded-xl border border-hairline bg-surface-card/30"
+        }`}
     >
       {/* Fullscreen button */}
       <button
@@ -92,7 +92,9 @@ const ModelViewer3D: React.FC<ModelViewer3DProps> = ({ src, alt, hotspots = [] }
         ar-modes="webxr scene-viewer quick-look"
         bounds="tight"
         field-of-view="15deg"
-        camera-orbit="0deg 75deg auto"
+        min-camera-orbit="auto auto 10%"
+        max-camera-orbit={disableZoom ? "auto auto auto" : "auto auto 65%"}
+        camera-orbit={disableZoom ? "0deg 75deg auto" : "0deg 75deg 65%"}
         style={{
           width: "100%",
           height: isFullscreen ? "100vh" : "550px",

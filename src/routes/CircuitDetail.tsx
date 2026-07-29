@@ -132,6 +132,7 @@ export default function CircuitDetail() {
                   src={circuit.model3D}
                   alt={circuit.name}
                   hotspots={HOTSPOTS_MAP[circuit.slug]}
+                  disableZoom={circuit.slug === 'traffic-light-esp8266'}
                 />
               </div>
             </div>
